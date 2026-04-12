@@ -1,0 +1,74 @@
+config_version: "2.7"
+created: "2026-04-11"
+
+project:
+  name: "game-eggs"
+  description: "Pterodactyl panel game server egg collection — JSON configuration files for dedicated game servers"
+  author_email: "michaelconne@gmail.com"
+
+routing:
+  force_type: null
+
+tech_stack:
+  primary: json
+  secondary: markdown
+  paradigm: auto
+  nx_workspace: false
+
+pipeline:
+  checkpoints: true
+  collaboration_patterns: true
+  max_self_correction: 3
+  max_dod_rounds: 3
+  parallel_validators: true
+  enforce_self_write_block: true
+  scope: all
+
+dod_validators:
+  idea: [product-owner, architect]
+  refine: [product-owner, architect, qa]
+  design: [ux, product-owner, qa, architect]
+  architect: [architect, qa, devops, security]
+  plan: [scrum-master, product-owner, qa, devops]
+  dev: [developer, qa, architect, tech-writer]
+  uat: [qa, devops, product-owner, tech-writer]
+
+team:
+  size: solo
+
+deployment:
+  environment: github
+  strategy: pull-request
+
+git:
+  branch_strategy: feature-branch
+  auto_branch: false
+  commit_convention: conventional
+  clean_tree_check: true
+
+github:
+  create_issues: false
+  create_pr: false
+  link_commits: false
+
+timeline:
+  risk_tolerance: low
+
+compliance:
+  frameworks: []
+
+personas:
+  categories: []
+  feedback_stages: [uat]
+
+enforcement:
+  source_code_hook: false
+  retro_frequency: every-run
+  retro_skip_allowed: false
+
+notifications:
+  channels: [console]
+  events: [complete, abort, escalation, checkpoint]
+
+aliases:
+  theme: business

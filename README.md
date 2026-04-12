@@ -254,6 +254,8 @@ Below is a categorized list of games with links to their respective server confi
 
 #### [Pavlov VR](./pavlov_vr)
 
+#### [Rainbow Six 3: Raven Shield](./rainbow_six_3_raven_shield)
+
 #### [Renown](./renown)
 
 #### [SCUM](./scum)

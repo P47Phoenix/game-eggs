@@ -1,0 +1,232 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2026-04-11T00:00:00+00:00",
+    "name": "Rainbow Six 3: Raven Shield",
+    "author": "michaelconne@gmail.com",
+    "description": "IMPORTANT: This image writes game data to /rvs (hardcoded). Pterodactyl mounts data at /home/container by default, causing an immediate startup crash (exit code 1). Fix: create a Panel Mount (Admin → Mounts) with Target = /rvs and assign it to this server. See the README for full steps. Tom Clancy's Rainbow Six 3: Raven Shield is a tactical first-person shooter released in 2003, featuring squad-based counter-terrorism missions with a strong emphasis on planning and precision. The dedicated server supports cooperative and adversarial multiplayer modes including Terrorist Hunt, Team Deathmatch, Bomb, Hostage Rescue, and Escort Pilot. This egg uses the OpenRVS community patch to restore server browser functionality and improve compatibility with modern systems.",
+    "features": null,
+    "docker_images": {
+        "ghcr.io\/danpowell88\/ravenshield_dedicatedserver": "ghcr.io\/danpowell88\/ravenshield_dedicatedserver"
+    },
+    "file_denylist": [],
+    "startup": "\/entrypoint.sh",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"OpenRVS is up to date\"\r\n}",
+        "logs": "{\r\n    \"custom\": true,\r\n    \"location\": \"logs\/server.log\"\r\n}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\necho \"Game files will be downloaded by the container entrypoint on first start.\"\r\nexit 0",
+            "container": "ghcr.io\/ptero-eggs\/installers:debian",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Game Preset",
+            "description": "Server game mode preset. Sets map rotation, game types, and server settings. Valid values: COOP, ADVERSARIAL, DEATHMATCH, TEAMDEATHMATCH, BOMB, HOSTAGERESCUE, ESCORTPILOT",
+            "env_variable": "GAME_PRESET",
+            "default_value": "COOP",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:COOP,ADVERSARIAL,DEATHMATCH,TEAMDEATHMATCH,BOMB,HOSTAGERESCUE,ESCORTPILOT",
+            "field_type": "text"
+        },
+        {
+            "name": "Server Port",
+            "description": "Primary UDP game port. The server beacon port will be PORT+1000 (default 8777) and the beacon port will be PORT+2000 (default 9777). All three ports must be allocated in the panel.",
+            "env_variable": "PORT",
+            "default_value": "7777",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|numeric|min:1024|max:65535",
+            "field_type": "text"
+        },
+        {
+            "name": "Server Name",
+            "description": "The name displayed in the server browser.",
+            "env_variable": "NAME",
+            "default_value": "Pterodactyl Raven Shield",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:64",
+            "field_type": "text"
+        },
+        {
+            "name": "Max Players",
+            "description": "Maximum number of players allowed on the server.",
+            "env_variable": "MAX_PLAYERS",
+            "default_value": "16",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|numeric|min:1|max:64",
+            "field_type": "text"
+        },
+        {
+            "name": "Map Slot 0",
+            "description": "Map name for rotation slot 0. Valid maps: Airport, Alpines, Bank, Garage, Import_Export, Island_Dawn, MeatPacking, Mountain_High, Oil_Refinery, Parade, Peaks, Penthouse, Presidio, Prison, Shipyard, Streets, Training, Warehouse",
+            "env_variable": "MAP_0",
+            "default_value": "Airport",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:64",
+            "field_type": "text"
+        },
+        {
+            "name": "Game Type Slot 0",
+            "description": "Game type for map slot 0. Valid values: R6Game.R6TerroristHuntCoopGame — Terrorist Hunt (Co-op), R6Game.R6TeamBomb — Team Bomb, R6Game.R6HostageRescueAdvGame — Hostage Rescue, R6Game.R6TeamDeathMatchGame — Team Deathmatch, R6Game.R6EscortPilotGame — Escort the Pilot, R6Game.R6DeathMatch — Deathmatch. An invalid game type will cause the server to exit on startup with an error.",
+            "env_variable": "GAMETYPE_0",
+            "default_value": "R6Game.R6TerroristHuntCoopGame",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:128",
+            "field_type": "text"
+        },
+        {
+            "name": "Map Slot 1",
+            "description": "Map name for rotation slot 1. Valid maps: Airport, Alpines, Bank, Garage, Import_Export, Island_Dawn, MeatPacking, Mountain_High, Oil_Refinery, Parade, Peaks, Penthouse, Presidio, Prison, Shipyard, Streets, Training, Warehouse",
+            "env_variable": "MAP_1",
+            "default_value": "Alpines",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:64",
+            "field_type": "text"
+        },
+        {
+            "name": "Game Type Slot 1",
+            "description": "Game type for map slot 1. Valid values: R6Game.R6TerroristHuntCoopGame — Terrorist Hunt (Co-op), R6Game.R6TeamBomb — Team Bomb, R6Game.R6HostageRescueAdvGame — Hostage Rescue, R6Game.R6TeamDeathMatchGame — Team Deathmatch, R6Game.R6EscortPilotGame — Escort the Pilot, R6Game.R6DeathMatch — Deathmatch. An invalid game type will cause the server to exit on startup with an error.",
+            "env_variable": "GAMETYPE_1",
+            "default_value": "R6Game.R6TerroristHuntCoopGame",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:128",
+            "field_type": "text"
+        },
+        {
+            "name": "Map Slot 2",
+            "description": "Map name for rotation slot 2. Valid maps: Airport, Alpines, Bank, Garage, Import_Export, Island_Dawn, MeatPacking, Mountain_High, Oil_Refinery, Parade, Peaks, Penthouse, Presidio, Prison, Shipyard, Streets, Training, Warehouse",
+            "env_variable": "MAP_2",
+            "default_value": "Shipyard",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:64",
+            "field_type": "text"
+        },
+        {
+            "name": "Game Type Slot 2",
+            "description": "Game type for map slot 2. Valid values: R6Game.R6TerroristHuntCoopGame — Terrorist Hunt (Co-op), R6Game.R6TeamBomb — Team Bomb, R6Game.R6HostageRescueAdvGame — Hostage Rescue, R6Game.R6TeamDeathMatchGame — Team Deathmatch, R6Game.R6EscortPilotGame — Escort the Pilot, R6Game.R6DeathMatch — Deathmatch. An invalid game type will cause the server to exit on startup with an error.",
+            "env_variable": "GAMETYPE_2",
+            "default_value": "R6Game.R6TerroristHuntCoopGame",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:128",
+            "field_type": "text"
+        },
+        {
+            "name": "Map Slot 3",
+            "description": "Map name for rotation slot 3. Valid maps: Airport, Alpines, Bank, Garage, Import_Export, Island_Dawn, MeatPacking, Mountain_High, Oil_Refinery, Parade, Peaks, Penthouse, Presidio, Prison, Shipyard, Streets, Training, Warehouse",
+            "env_variable": "MAP_3",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:64",
+            "field_type": "text"
+        },
+        {
+            "name": "Game Type Slot 3",
+            "description": "Game type for map slot 3. Valid values: R6Game.R6TerroristHuntCoopGame — Terrorist Hunt (Co-op), R6Game.R6TeamBomb — Team Bomb, R6Game.R6HostageRescueAdvGame — Hostage Rescue, R6Game.R6TeamDeathMatchGame — Team Deathmatch, R6Game.R6EscortPilotGame — Escort the Pilot, R6Game.R6DeathMatch — Deathmatch. An invalid game type will cause the server to exit on startup with an error.",
+            "env_variable": "GAMETYPE_3",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:128",
+            "field_type": "text"
+        },
+        {
+            "name": "Map Slot 4",
+            "description": "Map name for rotation slot 4. Valid maps: Airport, Alpines, Bank, Garage, Import_Export, Island_Dawn, MeatPacking, Mountain_High, Oil_Refinery, Parade, Peaks, Penthouse, Presidio, Prison, Shipyard, Streets, Training, Warehouse",
+            "env_variable": "MAP_4",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:64",
+            "field_type": "text"
+        },
+        {
+            "name": "Game Type Slot 4",
+            "description": "Game type for map slot 4. Valid values: R6Game.R6TerroristHuntCoopGame — Terrorist Hunt (Co-op), R6Game.R6TeamBomb — Team Bomb, R6Game.R6HostageRescueAdvGame — Hostage Rescue, R6Game.R6TeamDeathMatchGame — Team Deathmatch, R6Game.R6EscortPilotGame — Escort the Pilot, R6Game.R6DeathMatch — Deathmatch. An invalid game type will cause the server to exit on startup with an error.",
+            "env_variable": "GAMETYPE_4",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:128",
+            "field_type": "text"
+        },
+        {
+            "name": "Map Slot 5",
+            "description": "Map name for rotation slot 5. Valid maps: Airport, Alpines, Bank, Garage, Import_Export, Island_Dawn, MeatPacking, Mountain_High, Oil_Refinery, Parade, Peaks, Penthouse, Presidio, Prison, Shipyard, Streets, Training, Warehouse",
+            "env_variable": "MAP_5",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:64",
+            "field_type": "text"
+        },
+        {
+            "name": "Game Type Slot 5",
+            "description": "Game type for map slot 5. Valid values: R6Game.R6TerroristHuntCoopGame — Terrorist Hunt (Co-op), R6Game.R6TeamBomb — Team Bomb, R6Game.R6HostageRescueAdvGame — Hostage Rescue, R6Game.R6TeamDeathMatchGame — Team Deathmatch, R6Game.R6EscortPilotGame — Escort the Pilot, R6Game.R6DeathMatch — Deathmatch. An invalid game type will cause the server to exit on startup with an error.",
+            "env_variable": "GAMETYPE_5",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:128",
+            "field_type": "text"
+        },
+        {
+            "name": "Admin Password",
+            "description": "Password for remote admin access. Leave blank to disable.",
+            "env_variable": "ADMIN_PASSWORD",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:64",
+            "field_type": "text"
+        },
+        {
+            "name": "Game Password",
+            "description": "Password players must enter to join. Leave blank for a public server.",
+            "env_variable": "GAME_PASSWORD",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:64",
+            "field_type": "text"
+        },
+        {
+            "name": "Internet Server",
+            "description": "Set to true to register the server publicly on the server browser. Set to false for a LAN-only server.",
+            "env_variable": "INTERNET_SERVER",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "Install OpenRVS",
+            "description": "Set to true to install the OpenRVS community patch, which improves server browser compatibility and fixes several bugs. Recommended.",
+            "env_variable": "INSTALL_OPENRVS",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        }
+    ]
+}
