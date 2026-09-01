@@ -52,6 +52,8 @@ Below is a categorized list of games with links to their respective server confi
 
 #### [Brickadia](./brickadia)
 
+#### [Carrier Command 2](./carrier_command_2)
+
 #### [Citadel](./citadel)
 
 #### ClassiCube
@@ -65,6 +67,8 @@ Below is a categorized list of games with links to their respective server confi
 #### [Colony Survival](./colony_survival)
 
 #### [Conan Exiles](./conan_exiles)
+
+#### [Conan Exiles Enhanced](./conan_exiles)
 
 #### [Contagion)](./contagion)
 
@@ -258,6 +262,8 @@ Below is a categorized list of games with links to their respective server confi
 
 #### [Renown](./renown)
 
+#### [Romestead](./romestead)
+
 #### [SCUM](./scum)
 
 #### [Plains of Pain](./plains_of_pain)
@@ -268,9 +274,26 @@ Below is a categorized list of games with links to their respective server confi
 
 #### [Soldat 2](./soldat_2)
 
+#### [Subnautica: Nitrox Mod](./subnautica_nitrox_mod)
+
+#### [StarRupture](./starrupture)
+
 #### [Sunkenland](./sunkenland)
 
-### [Voyager of Nera](./voyagers_of_nera)
+#### [Team Fortress 2](./team_fortress_2)
+
+#### [Voyager of Nera](./voyagers_of_nera)
+
+#### [Windrose](./windrose)
+
+#### [Wine Generic](./wine/generic)
+
+#### [Wolfenstein: Enemy Territory (ET Legacy)](./wolfenstein_enemy_territory/etlegacy)
+
+#### [Wurm Unlimited](./wurm_unlimited)
+
+#### [Xonotic](./xonotic)
+
 
 ---
 
